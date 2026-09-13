@@ -1,0 +1,132 @@
+@baseUrl = http://127.0.0.1:8000
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg4NjMwMjc5LCJpYXQiOjE3ODg2MjkzNzksImp0aSI6IjY1NWVjNWM5M2I0YzQ5YmJiN2VmY2Q0OGU0Y2ZmMWE4IiwidXNlcl9pZCI6IjMifQ.ePcDs5AkpzcC1-uqzszHq4SW0D86-Wf-CFbvd-a6g44
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4OTIyOTA3MSwiaWF0IjoxNzg4NjI0MjcxLCJqdGkiOiJmODViYmU0Y2Q2NzA0MGE0Yjc4MTllMTMxZmMwNmQ1NSIsInVzZXJfaWQiOiI0In0.0_7a-eEHsDVhIHAf3kXQK_Xsffq5RU-lnHi8QWoswjo
+###
+POST {{baseUrl}}/api/account/register/
+Content-Type: application/json
+
+{
+    "username": "niamien",
+    "email": "niamien@example.com",
+    "password": "poi123456",
+    "first_name": "niamien",
+    "last_name": "eric",
+    "address": "man",
+    "phone_number": "+22507005626",
+    "blood_type": "O-"
+}
+
+###
+POST {{baseUrl}}/api/account/login/
+Content-Type: application/json
+
+{
+    "username": "niamien",
+    "password": "poi123456"
+}
+
+###
+GET {{baseUrl}}/api/account/me/
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+
+###
+GET {{baseUrl}}/api/account/profile/
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+
+###
+PATCH {{baseUrl}}/api/account/profile/
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "first_name":"Junior"
+}
+
+
+###
+POST {{baseUrl}}/api/account/refresh/
+Content-Type: application/json
+
+{
+    "refresh": {{refreshToken}}
+}
+
+
+
+###
+POST {{baseUrl}}/api/account/logout/
+Authorization: Bearer {{accessToken}}
+
+{
+    "refresh": {{refreshToken}}
+}
+
+
+###
+POST {{baseUrl}}/api/alerts/
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+    "latitude": 5.359951,
+    "longitude": -4.008256,
+    "emergency_type": "MEDICAL"
+}
+
+
+####
+GET {{baseUrl}}/api/alerts/
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+
+####
+GET {{baseUrl}}/api/alerts/2/
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+
+###
+DELETE  {{baseUrl}}/api/alerts/2/
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+###
+GET http://127.0.0.1:8000/api/alerts/available/
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{baseUrl}}/api/alerts/2/accepted/
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{baseUrl}}/api/alerts/2/resolved/
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{baseUrl}}/api/alerts/3/cancelled/
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{baseUrl}}/api/alerts/admin/
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{baseUrl}}/api/users/2/promote-helper/
+Authorization: Bearer {{accessToken}}
+
+###
+POST {{baseUrl}}/api/users/2/demote-victim/
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{baseUrl}}/api/users/2/
+Authorization: Bearer {{accessToken}}
+
+###
+GET {{baseUrl}}/api/users/
+Authorization: Bearer {{accessToken}}
