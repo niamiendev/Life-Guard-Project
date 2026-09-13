@@ -1,0 +1,10 @@
+
+export const bg = "#1e1e1c"
+export const light_grey = "#5f5f5a"
+export const dark_grey = "#353531"
+export const white = "#f5f5f5"
+export const white_text = "#bebebe"
+export const green = "#029c02"
+export const blue = "#008cff"
+export const red_light = "#f54d4d"
+export const red_dark = "#740202"

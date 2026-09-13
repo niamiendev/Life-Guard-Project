@@ -1,43 +1,66 @@
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import Button from '../../components/button'
+import Input from '../../components/input'
+import Row from '../../components/row'
+import Screen from '../../components/screen'
+import { bg, white, white_text } from '../../utils/color'
 
-export default function Index(){
+export default function Index() {
+  const router = useRouter()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-  const [compt, setCompt]  = useState(0)
-
-  const compter = () =>{
-      setCompt(compt + 1)
-  }
 
   return (
-    <View style = {styles.container}>
-      <Text> Je pense que ca va mieux</Text>
-      <Text style = {styles.title}> {compt} </Text>
-      <TouchableOpacity style = {styles.button} activeOpacity={0.4} onPress={compter} >
-        <Text> Compter </Text>
-      </TouchableOpacity>
-    </View>
+    <Screen style={styles.container}>
+      <View style={{ gap: 16 }}>
+
+        <Input placeholder='Identifiant' icon='person-outline' value={username} onChangeText={setUsername} />
+        <Input placeholder='Mot de passe' icon='lock-closed-outline' value={password} onChangeText={setPassword} />
+
+        <Button
+        backgroundColor={white}
+          onPress={() => { router.push("/(tabs)/emergency") }}
+        >
+          <Text style={styles.buttonText}>Connexion</Text>
+        </Button>
+      </View>
+      <Row style={{ width: "100%" }}>
+        <Button
+          style={{ width: "50%" }}
+          backgroundColor={bg}
+          withBorder={true}
+          onPress={() => { }}
+        >
+          <Text style={{color:bg}}>Face ID</Text>
+        </Button>
+
+        <Button
+          style={{ width: "50%" }}
+          backgroundColor={bg}
+          withBorder={true}
+          onPress={() => { }}
+        >
+          <Text style={styles.buttonText}>Google</Text>
+        </Button>
+
+      </Row>
+
+    </Screen>
   )
 }
 
 const styles = StyleSheet.create(
   {
-    container:{
-      flex:1,
-      backgroundColor: "#b7e930",
-      alignItems:'center',
-      justifyContent:'center'
+    container: {
+      flex: 1,
+      color: white,
+      padding: 16
     },
-    title :{
-      fontSize: 60
-    },
-    button:{
-      paddingHorizontal:12,
-      paddingVertical:8,
-      borderRadius:16,
-      borderColor:"#0000ff",
-      borderWidth:2,
-      backgroundColor: "#ff0000"
+    buttonText: {
+      color: white_text
     }
   }
 )
