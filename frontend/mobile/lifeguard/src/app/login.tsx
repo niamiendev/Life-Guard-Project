@@ -74,7 +74,7 @@ export default function Login() {
           onPress={() => { }}
         >
           <Row style={{ gap: 8, alignItems: "center", justifyContent:"center" }}>
-            <Text style={[styles.buttonText, { fontWeight: "bold" , fontSize: 24}]}>G</Text>
+            <Text style={[styles.buttonText, { fontWeight: "bold" , fontSize: 22}]}>G</Text>
             <Text style={styles.buttonText}>Google</Text>
           </Row>
         </Button>

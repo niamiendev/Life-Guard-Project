@@ -86,7 +86,7 @@ const Health = () => {
         data={traitements}
         ItemSeparatorComponent={
           () => (
-            <View style = {{height:2, backgroundColor:light_grey, margin:4}}></View>
+            <View style = {{height:1, backgroundColor:dark_grey}}></View>
           )
         }
         renderItem={({ item }) => (
@@ -101,7 +101,9 @@ const Health = () => {
         )}
         keyExtractor={(item, index) => index.toString()}
       />
+      <SectionTitle text='Contact' />
     </Screen>
+    
   )
 }
 
