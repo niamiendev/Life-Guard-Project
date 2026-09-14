@@ -10,7 +10,7 @@ const Hearder = () => {
             <View style={{ gap: 8 }}>
                 <Text style={{ color: white, fontSize: 28, fontWeight: "700", textAlign:"center" }}>Life Guard</Text>
                 <Card backgroundColor={green_opacity} style={{ paddingHorizontal: 12, paddingVertical: 4, borderRadius: 12 }}>
-                    <Text style={{ color: green, fontWeight: "bold", fontSize:10, textAlign:"center" }}>Réseau actif 24/7</Text>
+                    <Text style={{ color: green, fontWeight: "bold", fontSize:11, textAlign:"center" }}>Réseau actif 24/7</Text>
                 </Card>
             </View>
         </View>

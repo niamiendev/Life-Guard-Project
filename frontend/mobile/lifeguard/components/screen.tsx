@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View, ViewProps } from 'react-native'
-import React from 'react'
-import { bg } from '../utils/color'
+import { StyleSheet, View, ViewProps } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { bg, white_text } from '../utils/color'
 
 const Screen = (
   { children, style, ...rest }: ViewProps
@@ -22,6 +21,7 @@ export default Screen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: bg
+    backgroundColor: bg,
+    color:white_text
   }
 })
