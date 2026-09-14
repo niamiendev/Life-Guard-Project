@@ -5,13 +5,17 @@ type props = ViewProps & {
   backgroundColor?:string ,
   borderRadius?:number,
 }
+
 const Card = (
-    {backgroundColor, borderRadius,children, style, ...rest}:props
+    { backgroundColor, borderRadius,children, style, ...rest }:props
 ) => {
   return (
     <View
         {...rest}
-        style = {[styles.card,{borderRadius:borderRadius}, style]}
+        style = {[styles.card,{
+          borderRadius:borderRadius,
+          backgroundColor:backgroundColor
+        }, style]}
     >
       {children}
     </View>

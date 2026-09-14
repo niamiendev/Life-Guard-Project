@@ -34,6 +34,7 @@ const Input = ({
                     onChangeText={onChangeText}
                     placeholder={placeholder}
                     placeholderTextColor={light_grey}
+                    keyboardType={placeholder === 'Email' ? 'email-address' : 'default'}
                 />
             </Row>
         </Card>
@@ -52,5 +53,6 @@ const styles = StyleSheet.create({
     },
     input: {
         color: white_text,
+        width: "100%",
     }
 })

@@ -26,68 +26,27 @@ export default function Index() {
           </Card>
         </View>
       </Row>
-      <Text style={{ color: white, fontSize: 24, fontWeight: "700" }}>Se connecter</Text>
+      <Text style={{ color: white, fontSize: 24, fontWeight: "700" }}>S'inscrire</Text>
       <View style={{ gap: 16 }}>
-
         <Input placeholder='Identifiant' icon='person-outline' value={username} onChangeText={setUsername} />
+        <Input placeholder='Email' icon='mail-outline' value={username} onChangeText={setUsername} />
         <Input placeholder='Mot de passe' icon='lock-closed-outline' value={password} onChangeText={setPassword} />
-        <Link href="/forgot">
-          <Text style={{ color: blue, textAlign: "right" }}>Mot de passe oublié ?</Text>
-        </Link>
+        <Input placeholder='Confirmer le mot de passe' icon='lock-closed-outline' value={password} onChangeText={setPassword} />
+
       </View>
       <View style={{ gap: 16, marginTop: 16 }}>
         <Button
-          backgroundColor={white}
-          onPress={() => { router.push("/(tabs)/emergency") }}
-        >
-          <Text style={{ color: bg }}>Connexion</Text>
-        </Button>
-        <Button
           withBorder={true}
           backgroundColor={bg}
-          onPress={() => { router.push("/register") }}
+          onPress={() => { router.push("/(tabs)/emergency") }}
         >
           <Text style={{ color: white }}>Créer un compte</Text>
         </Button>
+        <Link href="/" style={{ color:"transparent", marginTop:24 }}>
+            <Text style={{ color: white_text, textAlign: "center" }}>Déjà un compte ? Connectez-vous</Text>
+          </Link>
       </View>
-      <Row style={{ width: "98%", justifyContent: "space-between", alignItems: "center" }}>
-        <View style={{ width: "45%", height: 1, backgroundColor: light_grey }}></View>
-        <Text style={{ color: white }}> OU </Text>
-        <View style={{ width: "45%", height: 1, backgroundColor: light_grey }}></View>
-      </Row>
 
-      <Row style={
-        {
-          width: "98%", gap: "2%",
-          justifyContent: "space-between",
-
-        }
-      }>
-        <Button
-          style={{ width: "50%" }}
-          backgroundColor={bg}
-          withBorder={true}
-          onPress={() => { }}
-        >
-          <Row style={{ gap: 8, alignItems: "center" }}>
-            <Ionicons name="finger-print-outline" size={24} color={white} />
-            <Text style={styles.buttonText}>Face ID</Text>
-          </Row>
-        </Button>
-
-        <Button
-          style={{ width: "50%" }}
-          backgroundColor={bg}
-          withBorder={true}
-          onPress={() => { }}
-        >
-          <Row style={{ gap: 8, alignItems: "center" }}>
-            <Text style={[styles.buttonText, { fontWeight: "bold" , fontSize: 18}]}>G</Text>
-            <Text style={styles.buttonText}>Google</Text>
-          </Row>
-        </Button>
-
-      </Row>
       <View style={{ flex: 1 }} ></View>
       <Text style={styles.bottomText}>
         Données de la localisation et de santé chiffrées de bout en bout

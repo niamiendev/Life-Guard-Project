@@ -5,7 +5,7 @@ type props = TouchableOpacityProps & {
     withBorder?: boolean,
     backgroundColor?: string,
 }
-const Button = ({ withBorder, backgroundColor, children, ...props }: props) => {
+const Button = ({ withBorder, backgroundColor, style, children, ...props }: props) => {
     return (
         <TouchableOpacity
             {...props}
@@ -15,7 +15,8 @@ const Button = ({ withBorder, backgroundColor, children, ...props }: props) => {
                         borderWidth: withBorder ? 1 : 0,
                         borderColor: light_grey,
                         backgroundColor: backgroundColor
-                    }
+                    },
+                    style
                 ]
             }
             activeOpacity={.5}
