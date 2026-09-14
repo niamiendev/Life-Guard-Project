@@ -7,6 +7,9 @@ export default function RootLayout() {
       <Stack.Screen name="index"
         options={{ headerShown: false, animation: "default" }}
       />
+      <Stack.Screen name="login"
+        options={{ headerShown: false, animation: "slide_from_right" }}
+      />
       <Stack.Screen name="register"
         options={{ headerShown: false, animation: "slide_from_right" }}
       />
