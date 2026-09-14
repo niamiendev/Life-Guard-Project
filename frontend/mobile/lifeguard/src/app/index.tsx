@@ -1,13 +1,13 @@
-import { Color, Link, useRouter } from 'expo-router'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import { Link, useRouter } from 'expo-router'
 import { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Button from '../../components/button'
+import Hearder from '../../components/header'
 import Input from '../../components/input'
 import Row from '../../components/row'
 import Screen from '../../components/screen'
-import { bg, blue, green, green_opacity, light_grey, white, white_text } from '../../utils/color'
-import Ionicons from '@expo/vector-icons/Ionicons'
-import Card from '../../components/card'
+import { bg, light_grey, white, white_text } from '../../utils/color'
 
 export default function Index() {
   const router = useRouter()
@@ -17,22 +17,14 @@ export default function Index() {
 
   return (
     <Screen style={styles.container}>
-      <Row style={{ gap: 16, marginBottom: 16 }}>
-        <Ionicons name="shield-checkmark-outline" size={42} color={white} />
-        <View style={{ gap: 8 }}>
-          <Text style={{ color: white, fontSize: 28, fontWeight: "700" }}>LifeG</Text>
-          <Card backgroundColor={green_opacity} style={{ paddingHorizontal: 12, paddingVertical: 4, borderRadius: 12 }}>
-            <Text style={{ color: green, fontWeight: "bold" }}>Réseau actif 24/7</Text>
-          </Card>
-        </View>
-      </Row>
+      <Hearder />
       <Text style={{ color: white, fontSize: 24, fontWeight: "700" }}>Se connecter</Text>
       <View style={{ gap: 16 }}>
 
         <Input placeholder='Identifiant' icon='person-outline' value={username} onChangeText={setUsername} />
         <Input placeholder='Mot de passe' icon='lock-closed-outline' value={password} onChangeText={setPassword} />
         <Link href="/forgot">
-          <Text style={{ color: blue, textAlign: "right" }}>Mot de passe oublié ?</Text>
+          <Text style={{ color: white_text, textAlign: "right" }}>Mot de passe oublié ?</Text>
         </Link>
       </View>
       <View style={{ gap: 16, marginTop: 16 }}>
@@ -64,25 +56,25 @@ export default function Index() {
         }
       }>
         <Button
-          style={{ width: "50%" }}
+          style={{ width: "50%", height:60 }}
           backgroundColor={bg}
           withBorder={true}
           onPress={() => { }}
         >
-          <Row style={{ gap: 8, alignItems: "center" }}>
+          <Row style={{ gap: 8, alignItems: "center", justifyContent:"center" }}>
             <Ionicons name="finger-print-outline" size={24} color={white} />
             <Text style={styles.buttonText}>Face ID</Text>
           </Row>
         </Button>
 
         <Button
-          style={{ width: "50%" }}
+          style={{ width: "50%", height:60 }}
           backgroundColor={bg}
           withBorder={true}
           onPress={() => { }}
         >
-          <Row style={{ gap: 8, alignItems: "center" }}>
-            <Text style={[styles.buttonText, { fontWeight: "bold" , fontSize: 18}]}>G</Text>
+          <Row style={{ gap: 8, alignItems: "center", justifyContent:"center" }}>
+            <Text style={[styles.buttonText, { fontWeight: "bold" , fontSize: 24}]}>G</Text>
             <Text style={styles.buttonText}>Google</Text>
           </Row>
         </Button>

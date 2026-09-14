@@ -1,13 +1,11 @@
-import { Color, Link, useRouter } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import Button from '../../components/button'
+import Hearder from '../../components/header'
 import Input from '../../components/input'
-import Row from '../../components/row'
 import Screen from '../../components/screen'
-import { bg, blue, green, green_opacity, light_grey, white, white_text } from '../../utils/color'
-import Ionicons from '@expo/vector-icons/Ionicons'
-import Card from '../../components/card'
+import { bg, light_grey, white, white_text } from '../../utils/color'
 
 export default function Index() {
   const router = useRouter()
@@ -17,15 +15,7 @@ export default function Index() {
 
   return (
     <Screen style={styles.container}>
-      <Row style={{ gap: 16, marginBottom: 16 }}>
-        <Ionicons name="shield-checkmark-outline" size={42} color={white} />
-        <View style={{ gap: 8 }}>
-          <Text style={{ color: white, fontSize: 28, fontWeight: "700" }}>LifeG</Text>
-          <Card backgroundColor={green_opacity} style={{ paddingHorizontal: 12, paddingVertical: 4, borderRadius: 12 }}>
-            <Text style={{ color: green, fontWeight: "bold" }}>Réseau actif 24/7</Text>
-          </Card>
-        </View>
-      </Row>
+      <Hearder />
       <Text style={{ color: white, fontSize: 24, fontWeight: "700" }}>Mot de passe oublié</Text>
       <View style={{ gap: 16 }}>
         <Input placeholder='Email' icon='person-outline' value={username} onChangeText={setUsername} />
