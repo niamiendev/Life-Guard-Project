@@ -7,7 +7,7 @@ import Hearder from '../../components/header'
 import Input from '../../components/input'
 import Row from '../../components/row'
 import Screen from '../../components/screen'
-import { bg, light_grey, white, white_text } from '../../utils/color'
+import { bg, light_grey, white, white_deg } from '../../utils/color'
 
 export default function Login() {
   const router = useRouter()
@@ -24,7 +24,7 @@ export default function Login() {
         <Input placeholder='Identifiant' icon='person-outline' value={username} onChangeText={setUsername} />
         <Input placeholder='Mot de passe' icon='lock-closed-outline' value={password} onChangeText={setPassword} />
         <Link href="/forgot">
-          <Text style={{ color: white_text, textAlign: "right" }}>Mot de passe oublié ?</Text>
+          <Text style={{ color: white_deg, textAlign: "right" }}>Mot de passe oublié ?</Text>
         </Link>
       </View>
       <View style={{ gap: 16, marginTop: 16 }}>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create(
       gap: 16
     },
     buttonText: {
-      color: white_text
+      color: white_deg
     },
     bottomText: {
       paddingHorizontal: 42,

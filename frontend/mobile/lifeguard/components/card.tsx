@@ -2,20 +2,29 @@ import { StyleSheet, View, ViewProps } from 'react-native'
 import { dark_grey } from '../utils/color'
 
 type props = ViewProps & {
-  backgroundColor?:string ,
-  borderRadius?:number,
+  backgroundColor?: string,
+  borderRadius?: number,
+  paddingHorizontal?: number,
+  paddingVertical?: number,
+  padding?: number,
+  withBorder?: boolean
 }
 
 const Card = (
-    { backgroundColor, borderRadius,children, style, ...rest }:props
+  { withBorder, backgroundColor, padding, borderRadius, paddingHorizontal, paddingVertical, children, style, ...rest }: props
 ) => {
   return (
     <View
-        {...rest}
-        style = {[styles.card,{
-          borderRadius:borderRadius,
-          backgroundColor:backgroundColor
-        }, style]}
+      {...rest}
+      style={
+        [
+          styles.card, {
+            backgroundColor, borderRadius, padding,
+            paddingHorizontal, paddingVertical,
+            borderWidth: withBorder ? 1 : 0
+          }, style
+        ]
+      }
     >
       {children}
     </View>
@@ -25,8 +34,7 @@ const Card = (
 export default Card
 
 const styles = StyleSheet.create({
-    card:{
-        borderWidth:1,
-        borderColor:dark_grey
-    }
+  card: {
+    borderColor: dark_grey
+  }
 })

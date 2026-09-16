@@ -1,24 +1,20 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import Card from '../../../components/card'
+import Params from '../../../components/params'
 import Row from '../../../components/row'
 import Screen from '../../../components/screen'
-import { bg, dark_grey, green, light_grey, red_dark, red_light, white, white_text } from '../../../utils/color'
-import Section from '../../../components/health/section'
 import SectionTitle from '../../../components/section-title'
+import { bg, green_light, light_grey, red_dark, red_light, white, white_deg } from '../../../utils/color'
 
 const traitements = [
   {
-    title: "Traitement 1",
-    description: "Description du traitement 1"
+    title: "Vantoline",
+    description: "si besoin"
   },
   {
-    title: "Traitement 2",
-    description: "Description du traitement 2"
-  },
-  {
-    title: "Traitement 3",
-    description: "Description du traitement 3"
+    title: "Coveram 10/5",
+    description: "1 cp / j"
   }
 ]
 const Health = () => {
@@ -46,8 +42,8 @@ const Health = () => {
           <View style={[styles.header]}>
             <Text style={{ color: white, fontSize: 18, fontWeight: "700" }}>Léa Fontaine</Text>
             <View style={{ marginTop: 4 }}>
-              <Text style={{ color: white_text }}>28 ans </Text>
-              <Text style={{ color: white_text }}>Abidjan - côte d'ivoire </Text>
+              <Text style={{ color: white_deg }}>28 ans </Text>
+              <Text style={{ color: white_deg }}>Abidjan - côte d'ivoire </Text>
             </View>
           </View>
         </Row>
@@ -61,12 +57,12 @@ const Health = () => {
       {/** tab de données */}
       <View>
         <Row>
-          <Section title="Taille" value="168 cm" color={white} />
-          <Section title="Poids" value="58 kg" color={white} />
+          <Params title="Taille" value="168 cm" color={white} />
+          <Params title="Poids" value="58 kg" color={white} />
         </Row>
         <Row>
-          <Section title="Groupe sanguin" value="O+ RH+" color={red_light} />
-          <Section title="Don d'organes" value="oui" color={green} />
+          <Params title="Groupe sanguin" value="O+ RH+" color={red_light} />
+          <Params title="Don d'organes" value="oui" color={green_light} />
         </Row>
       </View>
       {/** allergies */}
@@ -77,33 +73,30 @@ const Health = () => {
       >
         <Row>
           <Ionicons name='alert-circle-outline' size={16} color={red_light} />
-          <Text style={{ color: red_light, fontSize: 14, fontWeight: "400", marginLeft:12 }}>Allergie sévère -- Pénicilline</Text>
+          <Text style={{ color: red_light, fontSize: 14, fontWeight: "400", marginLeft: 12 }}>Allergie sévère -- Pénicilline</Text>
         </Row>
       </Card>
       {/** traitements */}
       <SectionTitle text='Traitements' />
-      <FlatList
-        data={traitements}
-        ItemSeparatorComponent={
-          () => (
-            <View style = {{height:1, backgroundColor:dark_grey}}></View>
-          )
+      <View>
+        {
+          traitements.map(({ title, description }) => (
+            <Card
+              key={title}
+              style={{ padding: 16, borderWidth: 0, borderBottomWidth: 1 }}
+              backgroundColor={bg}
+            >
+              <Row style = {{justifyContent:'space-between'}}>
+                <Text style={{ color: white, fontSize: 16, fontWeight: "700" }}>{title}</Text>
+                <Text style={{ color: light_grey, fontSize: 12, fontWeight: "400", marginTop: 4 }}>{description}</Text>
+              </Row>
+
+            </Card>
+          ))
         }
-        renderItem={({ item }) => (
-          <Card
-            style={{ padding: 16 }}
-            backgroundColor={bg}
-            borderRadius={4}
-          >
-            <Text style={{ color: white, fontSize: 14, fontWeight: "700" }}>{item.title}</Text>
-            <Text style={{ color: light_grey, fontSize: 12, fontWeight: "400", marginTop: 4 }}>{item.description}</Text>
-          </Card>
-        )}
-        keyExtractor={(item, index) => index.toString()}
-      />
-      <SectionTitle text='Contact' />
+      </View>
     </Screen>
-    
+
   )
 }
 

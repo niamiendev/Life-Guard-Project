@@ -1,14 +1,21 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { white_text } from '../utils/color'
+import { light_grey } from '../utils/color'
 
 type props = {
-    text: string
+  marginTop?: number,
+  marginBottom?: number,
+  text: string
 }
-const SectionTitle = ({text}:props) => {
+const SectionTitle = ({ marginBottom, marginTop, text, ...rest }: props) => {
   return (
-    <View>
-      <Text style = {styles.content}>{text}</Text>
+    <View style={
+      {
+        marginTop: marginTop ? 16 : 0,
+        marginBottom: marginBottom ? 16 : 0
+      }
+    }
+      {...rest} >
+      <Text style={styles.content}>{text}</Text>
     </View>
   )
 }
@@ -16,8 +23,9 @@ const SectionTitle = ({text}:props) => {
 export default SectionTitle
 
 const styles = StyleSheet.create({
-    content: {
-        marginHorizontal: 16,
-        color: white_text,
-    }
+  content: {
+    marginHorizontal: 16,
+    color: light_grey,
+    fontWeight: "bold"
+  }
 })

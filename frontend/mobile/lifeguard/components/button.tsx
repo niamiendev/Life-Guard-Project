@@ -3,15 +3,17 @@ import { light_grey, white } from '../utils/color'
 
 type props = TouchableOpacityProps & {
     withBorder?: boolean,
+    isDashed?:boolean,
     backgroundColor?: string,
 }
-const Button = ({ withBorder, backgroundColor, style, children, ...props }: props) => {
+const Button = ({ withBorder,isDashed, backgroundColor, style, children, ...props }: props) => {
     return (
         <TouchableOpacity
             {...props}
             style={
                 [
                     styles.button, {
+                        borderStyle:isDashed ? "dashed" : "solid",
                         borderWidth: withBorder ? 1 : 0,
                         borderColor: light_grey,
                         backgroundColor: backgroundColor

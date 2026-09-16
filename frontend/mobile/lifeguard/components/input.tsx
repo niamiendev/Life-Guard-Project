@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { StyleSheet, TextInput } from 'react-native'
-import { light_grey, white_text } from '../utils/color'
+import { light_grey, white_deg } from '../utils/color'
 import Card from './card'
 import Row from './row'
 
@@ -18,7 +18,7 @@ const Input = ({
     onChangeText
 }: Props) => {
     return (
-        <Card borderRadius={16} style={styles.card}>
+        <Card withBorder = {true} borderRadius={16} style={styles.card}>
             <Row style={styles.row}>
                 {icon && (
                     <Ionicons
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         gap: 8
     },
     input: {
-        color: white_text,
+        color: white_deg,
         width: "100%",
     }
 })

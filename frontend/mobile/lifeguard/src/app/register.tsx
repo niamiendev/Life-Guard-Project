@@ -5,7 +5,7 @@ import Button from '../../components/button'
 import Hearder from '../../components/header'
 import Input from '../../components/input'
 import Screen from '../../components/screen'
-import { bg, light_grey, white, white_text } from '../../utils/color'
+import { bg, light_grey, white, white_deg } from '../../utils/color'
 
 export default function Index() {
   const router = useRouter()
@@ -33,7 +33,7 @@ export default function Index() {
           <Text style={{ color: white }}>Créer un compte</Text>
         </Button>
         <Link href="/" style={{ color:"transparent", marginTop:24 }}>
-            <Text style={{ color: white_text, textAlign: "center" }}>Déjà un compte ? Connectez-vous</Text>
+            <Text style={{ color: white_deg, textAlign: "center" }}>Déjà un compte ? Connectez-vous</Text>
           </Link>
       </View>
 
@@ -56,7 +56,7 @@ const styles = StyleSheet.create(
       gap: 16
     },
     buttonText: {
-      color: white_text
+      color: white_deg
     },
     bottomText: {
       paddingHorizontal: 42,
