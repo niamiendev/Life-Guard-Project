@@ -75,7 +75,7 @@ export default Direct
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 24,
-    gap: 16
+    gap: 8
   },
   map: {
     width: "100%",

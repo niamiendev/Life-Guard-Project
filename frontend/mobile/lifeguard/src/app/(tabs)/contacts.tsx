@@ -6,7 +6,7 @@ import ContactItem from '../../../components/contact-section'
 import Row from '../../../components/row'
 import Screen from '../../../components/screen'
 import SectionTitle from '../../../components/section-title'
-import { blue_dark, blue_light, green_dark, green_light, light_grey, red_dark, red_light, white, white_deg } from '../../../utils/color'
+import { bg, blue_dark, blue_light, green_dark, green_light, light_grey, red_dark, red_light, white, white_deg } from '../../../utils/color'
 
 const contacts = () => {
   return (
@@ -57,6 +57,7 @@ const contacts = () => {
         withBorder={true}
         isDashed={true}
         style={{ marginHorizontal: 16 }}
+        backgroundColor={bg}
       >
         <Row gap={16}>
           <Ionicons name={'add'} size={24} color={white_deg} />

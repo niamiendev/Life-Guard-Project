@@ -1,18 +1,51 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { Link, useRouter } from 'expo-router'
-import { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { useEffect, useState } from 'react'
+import { Alert, StyleSheet, Text, View } from 'react-native'
 import Button from '../../components/button'
 import Hearder from '../../components/header'
 import Input from '../../components/input'
 import Row from '../../components/row'
 import Screen from '../../components/screen'
 import { bg, light_grey, white, white_deg } from '../../utils/color'
+import useAuth from '../../hooks/useAuth'
 
 export default function Login() {
   const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+
+  const { login, authenticated } = useAuth()
+
+  useEffect(() => {
+    if (authenticated) {
+        router.push("/(tabs)/emergency")
+    }
+}, [authenticated])
+
+  const connexion = async () => {
+
+    if (username.trim() !== "" && password.trim() !== "") {
+
+      try {
+        
+        login(username, password)
+
+      } catch (error) {
+        console.log(error)
+        Alert.alert(
+                "Erreur",
+                "Nom d'utilisateur ou mot de passe incorrect."
+            )
+      }
+    } else {
+      Alert.alert(
+        "Erreur",
+        "Veuillez vérifiez les champs à remplir."
+      )
+    }
+
+  }
 
 
   return (
@@ -30,7 +63,7 @@ export default function Login() {
       <View style={{ gap: 16, marginTop: 16 }}>
         <Button
           backgroundColor={white}
-          onPress={() => { router.push("/(tabs)/emergency") }}
+          onPress={connexion}
         >
           <Text style={{ color: bg }}>Connexion</Text>
         </Button>
@@ -56,25 +89,25 @@ export default function Login() {
         }
       }>
         <Button
-          style={{ width: "50%", height:60 }}
+          style={{ width: "50%", height: 60 }}
           backgroundColor={bg}
           withBorder={true}
           onPress={() => { }}
         >
-          <Row style={{ gap: 8, alignItems: "center", justifyContent:"center" }}>
+          <Row style={{ gap: 8, alignItems: "center", justifyContent: "center" }}>
             <Ionicons name="finger-print-outline" size={24} color={white} />
             <Text style={styles.buttonText}>Face ID</Text>
           </Row>
         </Button>
 
         <Button
-          style={{ width: "50%", height:60 }}
+          style={{ width: "50%", height: 60 }}
           backgroundColor={bg}
           withBorder={true}
           onPress={() => { }}
         >
-          <Row style={{ gap: 8, alignItems: "center", justifyContent:"center" }}>
-            <Text style={[styles.buttonText, { fontWeight: "bold" , fontSize: 22}]}>G</Text>
+          <Row style={{ gap: 8, alignItems: "center", justifyContent: "center" }}>
+            <Text style={[styles.buttonText, { fontWeight: "bold", fontSize: 22 }]}>G</Text>
             <Text style={styles.buttonText}>Google</Text>
           </Row>
         </Button>

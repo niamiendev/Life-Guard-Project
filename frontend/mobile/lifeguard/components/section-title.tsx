@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
   content: {
     marginHorizontal: 16,
     color: light_grey,
-    fontWeight: "bold"
+    fontWeight: "500"
   }
 })
