@@ -5,16 +5,21 @@ import { useAuth } from '../../context/authContext'
 
 export default function Index() {
 
-    const {isAuthenticated, loading }  = useAuth()
-    if(loading){
+    const { isAuthenticated, loading } = useAuth()
+    if (loading) {
         return (
-            
-            <View style = {{flex:1, justifyContent:"center", alignItems:"center"}}>
+            <View style={
+                {
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center"
+                }
+            }>
                 <ActivityIndicator />
             </View>
         )
     }
-    if(isAuthenticated){
+    if (isAuthenticated) {
         return <Redirect href="/(tabs)/emergency" />
     }
     return <Redirect href="/login" />

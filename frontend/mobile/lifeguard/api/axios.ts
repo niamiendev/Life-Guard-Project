@@ -2,7 +2,7 @@ import axios from "axios"
 import { tokenStorage } from "../storages/tokenStorage"
 
 const api = axios.create({
-    baseURL: "http://192.168.1.10:8000/api",
+    baseURL: "http://192.168.1.9:8000/api",
     headers: {
         "Content-Type": "application/json"
     }

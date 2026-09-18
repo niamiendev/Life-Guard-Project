@@ -17,7 +17,7 @@ type AuthContextType = {
     profile: Profile | null
     loading: boolean
     isAuthenticated: boolean
-    register : (profile:Profile) => Promise<void>
+    register: (profile: Profile) => Promise<void>
     login: (username: string, password: string) => Promise<void>
     logout: () => Promise<void>
 }
@@ -26,16 +26,16 @@ const AuthContext = createContext<AuthContextType>({
     profile: null,
     loading: true,
     isAuthenticated: false,
-    register: async () => {},
-    login: async () => {},
-    logout: async () => {}
+    register: async () => { },
+    login: async () => { },
+    logout: async () => { }
 })
 
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [profile, setProfile] = useState<Profile | null>(null)
     const [loading, setLoading] = useState(true)
 
-    // useCallback évite le warning ESLint (react-hooks/exhaustive-deps)
+    // vérifie si l'utilisateur est connecté
     const checkAuth = useCallback(async () => {
         try {
             const token = await tokenStorage.getAccessToken()
@@ -45,7 +45,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 return
             }
 
-            const response = await api.get<Profile>("/auth/me/")
+            const response = await api.get<Profile>("/account/me/")
             setProfile(response.data)
 
         } catch (error) {
@@ -61,7 +61,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         checkAuth()
     }, [])
-    
+
+    // creation du compte
     const register = async (profile: Profile) => {
 
         try {
@@ -78,32 +79,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
     }
 
+    //connexion
     const login = async (username: string, password: string) => {
-        // On ne touche pas à setLoading ici : l'appelant gère son propre état UI
-        const response = await api.post<{ access: string; refresh: string }>(
-            "/auth/login/",
-            { username, password }
-        )
-
-        const { access, refresh } = response.data
-        await tokenStorage.save(access, refresh)
-
         try {
-            const userResponse = await api.get<Profile>("/auth/me/")
+            const response = await api.post(
+                "/account/login/",
+                { username, password }
+            )
+
+            const { access, refresh } = response.data
+            await tokenStorage.save(access, refresh)
+
+            const userResponse = await api.get<Profile>("/account/me/")
             setProfile(userResponse.data)
         } catch (error) {
-            // Si /auth/me/ échoue après login, on nettoie pour éviter un état incohérent
             await tokenStorage.clear()
             throw error
         }
     }
 
+    //déconnexion
     const logout = async () => {
         try {
             const refreshToken = await tokenStorage.getRefreshToken()
 
             if (refreshToken) {
-                await api.post("/auth/logout/", { refresh: refreshToken })
+                await api.post("/account/logout/", { refresh: refreshToken })
             }
         } catch (error) {
             console.error("Erreur lors du logout :", error)

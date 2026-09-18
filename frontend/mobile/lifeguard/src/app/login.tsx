@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { Link, useRouter } from 'expo-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Alert, StyleSheet, Text, View } from 'react-native'
 import Button from '../../components/button'
 import Hearder from '../../components/header'
@@ -15,22 +15,28 @@ export default function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const { login } = useAuth()
+  const { login, isAuthenticated } = useAuth()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.replace("/(tabs)/emergency")
+    }
+  }, [isAuthenticated])
 
   const handleLogin = async () => {
 
     if (username.trim() !== "" && password.trim() !== "") {
 
       try {
-        
+
         login(username, password)
 
       } catch (error) {
         console.log(error)
         Alert.alert(
-                "Erreur",
-                "Nom d'utilisateur ou mot de passe incorrect."
-            )
+          "Erreur",
+          "Nom d'utilisateur ou mot de passe incorrect."
+        )
       }
     } else {
       Alert.alert(
