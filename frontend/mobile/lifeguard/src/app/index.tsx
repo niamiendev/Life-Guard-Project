@@ -1,10 +1,21 @@
-import Contacts from './(tabs)/contacts'
-import Direct from './(tabs)/direct'
-import Emergency from './(tabs)/emergency'
-import Login from './login'
+
+import { Redirect } from 'expo-router'
+import { ActivityIndicator, View } from 'react-native'
+import { useAuth } from '../../context/authContext'
 
 export default function Index() {
-    return (
-        <Login />
-    )
+
+    const {isAuthenticated, loading }  = useAuth()
+    if(loading){
+        return (
+            
+            <View style = {{flex:1, justifyContent:"center", alignItems:"center"}}>
+                <ActivityIndicator />
+            </View>
+        )
+    }
+    if(isAuthenticated){
+        return <Redirect href="/(tabs)/emergency" />
+    }
+    return <Redirect href="/login" />
 }

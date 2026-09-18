@@ -1,29 +1,23 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { Link, useRouter } from 'expo-router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Alert, StyleSheet, Text, View } from 'react-native'
 import Button from '../../components/button'
 import Hearder from '../../components/header'
 import Input from '../../components/input'
 import Row from '../../components/row'
 import Screen from '../../components/screen'
+import { useAuth } from '../../context/authContext'
 import { bg, light_grey, white, white_deg } from '../../utils/color'
-import useAuth from '../../hooks/useAuth'
 
 export default function Login() {
   const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const { login, authenticated } = useAuth()
+  const { login } = useAuth()
 
-  useEffect(() => {
-    if (authenticated) {
-        router.push("/(tabs)/emergency")
-    }
-}, [authenticated])
-
-  const connexion = async () => {
+  const handleLogin = async () => {
 
     if (username.trim() !== "" && password.trim() !== "") {
 
@@ -63,7 +57,7 @@ export default function Login() {
       <View style={{ gap: 16, marginTop: 16 }}>
         <Button
           backgroundColor={white}
-          onPress={connexion}
+          onPress={handleLogin}
         >
           <Text style={{ color: bg }}>Connexion</Text>
         </Button>

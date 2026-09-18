@@ -1,13 +1,12 @@
 import { Link, useRouter } from 'expo-router'
 import { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, View } from 'react-native'
 import Button from '../../components/button'
 import Hearder from '../../components/header'
 import Input from '../../components/input'
 import Screen from '../../components/screen'
+import { useAuth } from '../../context/authContext'
 import { bg, light_grey, white, white_deg } from '../../utils/color'
-import useAuth, { Profile } from '../../hooks/useAuth'
-import { Alert } from "react-native"
 
 
 export default function Index() {
@@ -19,7 +18,7 @@ export default function Index() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const CreateAccount = async () => {
+  const handleRgister = async () => {
     const sp = fullname.split(" ")
     if (
       fullname.trim() != ""
@@ -68,7 +67,7 @@ export default function Index() {
         <Button
           withBorder={true}
           backgroundColor={bg}
-          onPress={CreateAccount}
+          onPress={handleRgister}
         >
           <Text style={{ color: white }}>Créer un compte</Text>
         </Button>
