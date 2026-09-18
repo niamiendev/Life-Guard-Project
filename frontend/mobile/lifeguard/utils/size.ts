@@ -1,7 +1,8 @@
 // utils/spacing.ts
-export const spacing = {
+export const SIZE = {
   xs:  4,
   sm:  8,
+  smx:12,
   md:  16,
   lg:  24,
   xl:  32,

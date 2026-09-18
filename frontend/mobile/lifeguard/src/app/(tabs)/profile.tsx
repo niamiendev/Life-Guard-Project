@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import Screen from '../../../components/screen'
 
-const Health = () => {
+const ProfileScreen = () => {
   return (
     <Screen style={[styles.container]}>
       {/** en tête */}
@@ -11,7 +11,7 @@ const Health = () => {
   )
 }
 
-export default Health
+export default ProfileScreen
 
 const styles = StyleSheet.create({
   container: {

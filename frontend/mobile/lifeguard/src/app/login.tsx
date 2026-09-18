@@ -1,10 +1,15 @@
+import Ionicons from '@expo/vector-icons/Ionicons'
 import { useRouter } from 'expo-router'
 import { useEffect, useState } from 'react'
-import { Alert, StyleSheet } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
+import Card from '../../components/card'
 import Screen from '../../components/screen'
+import TextView from '../../components/textview'
 import { useAuth } from '../../context/authContext'
+import { PRIMARY, TEXT } from '../../utils/color'
+import { SIZE } from '../../utils/size'
 
-export default function Login() {
+export default function LoginScreen() {
   const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -13,7 +18,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.replace("/(tabs)/emergency")
+      router.replace("/(tabs)/home")
     }
   }, [isAuthenticated])
 
@@ -43,8 +48,33 @@ export default function Login() {
 
 
   return (
-    <Screen style={styles.container}>
-      
+    <Screen>
+      <View style={styles.container}>
+        <View style={styles.upSection}>
+          <Card
+            opacity={.5}
+            radius={SIZE.md}
+            padding={SIZE.md}
+            backgroundColor={TEXT.titleWhite}
+          >
+            <Ionicons name='shield-checkmark-outline'
+              size={SIZE.xl}
+              color={TEXT.labelGray}
+            />
+          </Card>
+          <View>
+            <TextView size={SIZE.lg} style={{ fontWeight: "900" }}>
+              Bon retour
+            </TextView>
+            <TextView size={SIZE.md} color={TEXT.secondaryWhite}>
+              Connectez-vous à votre espace LifeGuard
+            </TextView>
+          </View>
+        </View>
+        <View style={styles.downSection}>
+
+        </View>
+      </View>
 
     </Screen>
   )
@@ -54,6 +84,18 @@ const styles = StyleSheet.create(
   {
     container: {
       flex: 1
+    },
+    upSection: {
+      flex: 1 / 3,
+      backgroundColor: PRIMARY.emergencyRed,
+      justifyContent: "flex-end",
+      padding: SIZE.md,
+      paddingVertical: SIZE.xxl,
+      gap: 16
+    },
+    downSection: {
+      flex: 2 / 3
+
     }
   }
 )

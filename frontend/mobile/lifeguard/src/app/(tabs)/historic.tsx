@@ -3,7 +3,7 @@ import Screen from '../../../components/screen'
 
 
 
-const Direct = () => {
+const HistoricScreen = () => {
   return (
     <Screen style={styles.container}>
 
@@ -12,7 +12,7 @@ const Direct = () => {
   )
 }
 
-export default Direct
+export default HistoricScreen
 
 const styles = StyleSheet.create({
   container: {

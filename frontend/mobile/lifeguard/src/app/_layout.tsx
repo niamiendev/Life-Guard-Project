@@ -8,6 +8,9 @@ export default function RootLayout() {
         <Stack.Screen name="index"
           options={{ headerShown: false, animation: "default" }}
         />
+        <Stack.Screen name="started"
+          options={{ headerShown: false, animation: "default" }}
+        />
         <Stack.Screen name="login"
           options={{ headerShown: false, animation: "fade" }}
         />

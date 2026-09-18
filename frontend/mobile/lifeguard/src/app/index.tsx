@@ -3,7 +3,7 @@ import { Redirect } from 'expo-router'
 import { ActivityIndicator, View } from 'react-native'
 import { useAuth } from '../../context/authContext'
 
-export default function Index() {
+export default function MainScreen() {
 
     const { isAuthenticated, loading } = useAuth()
     if (loading) {
@@ -22,5 +22,5 @@ export default function Index() {
     if (isAuthenticated) {
         return <Redirect href="/(tabs)/emergency" />
     }
-    return <Redirect href="/login" />
+    return <Redirect href="/started" />
 }

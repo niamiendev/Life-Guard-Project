@@ -1,8 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
-import { StyleSheet, TextInput } from 'react-native'
-import { light_grey, white_deg } from '../utils/color'
-import Card from './card'
-import Row from './row'
+import { StyleSheet, View } from 'react-native'
 
 type Props = {
     icon?: keyof typeof Ionicons.glyphMap
@@ -18,26 +15,7 @@ const Input = ({
     onChangeText
 }: Props) => {
     return (
-        <Card withBorder = {true} borderRadius={16} style={styles.card}>
-            <Row style={styles.row}>
-                {icon && (
-                    <Ionicons
-                        name={icon}
-                        size={24}
-                        color={light_grey}
-                    />
-                )}
-
-                <TextInput
-                    style={styles.input}
-                    value={value}
-                    onChangeText={onChangeText}
-                    placeholder={placeholder}
-                    placeholderTextColor={light_grey}
-                    keyboardType={placeholder === 'Email' ? 'email-address' : 'default'}
-                />
-            </Row>
-        </Card>
+        <View></View>
     )
 }
 
@@ -51,8 +29,4 @@ const styles = StyleSheet.create({
     row: {
         gap: 8
     },
-    input: {
-        color: white_deg,
-        width: "100%",
-    }
 })

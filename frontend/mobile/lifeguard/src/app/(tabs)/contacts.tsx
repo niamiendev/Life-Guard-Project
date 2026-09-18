@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import Screen from '../../../components/screen'
 
-const contacts = () => {
+const contactsScreen = () => {
   return (
     <Screen style={styles.container}>
 
@@ -10,7 +10,7 @@ const contacts = () => {
   )
 }
 
-export default contacts
+export default contactsScreen
 
 const styles = StyleSheet.create({
   container: {

@@ -1,40 +1,48 @@
 import { StyleSheet, View, ViewProps } from 'react-native'
-import { dark_grey } from '../utils/color'
 
-type props = ViewProps & {
-  backgroundColor?: string,
-  borderRadius?: number,
-  paddingHorizontal?: number,
-  paddingVertical?: number,
-  padding?: number,
-  withBorder?: boolean
+type Props = ViewProps & {
+    radius?: number,
+    border?: boolean,
+    borderColor?: string,
+    backgroundColor?: string,
+    padding?: number,
+    opacity?: number
 }
 
+
 const Card = (
-  { withBorder, backgroundColor, padding, borderRadius, paddingHorizontal, paddingVertical, children, style, ...rest }: props
-) => {
-  return (
-    <View
-      {...rest}
-      style={
-        [
-          styles.card, {
-            backgroundColor, borderRadius, padding,
-            paddingHorizontal, paddingVertical,
-            borderWidth: withBorder ? 1 : 0
-          }, style
-        ]
-      }
-    >
-      {children}
-    </View>
-  )
+    {
+        opacity,
+        radius, border, borderColor, backgroundColor, padding,
+        children, style, ...rest
+
+    }: Props) => {
+    return (
+        <View
+            style={
+                [
+                    styles.card,
+                    {
+                        borderWidth: border ? 1 : 0,
+                        borderColor: border ? borderColor : "",
+                        borderRadius: radius,
+                        backgroundColor,
+                        padding,
+                        opacity
+                    },
+                    style
+                ]
+            }
+            {...rest}>
+            {children}
+        </View>
+    )
 }
 
 export default Card
 
 const styles = StyleSheet.create({
-  card: {
-    borderColor: dark_grey
-  }
+    card:{
+        alignSelf:"flex-start"
+    }
 })

@@ -1,30 +1,36 @@
 import { StyleSheet, TouchableOpacity, TouchableOpacityProps } from 'react-native'
-import { light_grey, white } from '../utils/color'
+import { DARK_BACKGROUNDS } from '../utils/color'
+import { SIZE } from '../utils/size'
 
-type props = TouchableOpacityProps & {
-    withBorder?: boolean,
-    isDashed?:boolean,
+type Props = TouchableOpacityProps & {
+    radius?: number,
+    border?: boolean,
+    borderColor?: string,
     backgroundColor?: string,
+    padding?: number
 }
-const Button = ({ withBorder,isDashed, backgroundColor, style, children, ...props }: props) => {
+const Button = (
+    { radius = SIZE.smx, border, borderColor = DARK_BACKGROUNDS.darkGray,
+        backgroundColor, padding = SIZE.smx,
+        children, style, ...rest }: Props
+) => {
     return (
-        <TouchableOpacity
-            {...props}
-            style={
-                [
-                    styles.button, {
-                        borderStyle:isDashed ? "dashed" : "solid",
-                        borderWidth: withBorder ? 1 : 0,
-                        borderColor: light_grey,
-                        backgroundColor: backgroundColor
-                    },
-                    style
-                ]
-            }
-            activeOpacity={.5}
-        >
+        <TouchableOpacity activeOpacity={.5} {...rest} style={
+            [
+                styles.button,
+                {
+                    borderWidth: border ? 1 : 0,
+                    borderColor: border ? borderColor : "",
+                    borderRadius: radius,
+                    backgroundColor,
+                    padding: padding,
+
+                },
+                style
+            ]
+        }  >
             {children}
-        </TouchableOpacity >
+        </TouchableOpacity>
     )
 }
 
@@ -32,9 +38,6 @@ export default Button
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: white,
-        paddingVertical: 16,
-        borderRadius: 12,
-        alignItems: "center"
+        alignItems:"center"
     }
 })

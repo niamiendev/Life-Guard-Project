@@ -5,7 +5,7 @@ import Screen from '../../components/screen'
 import { useAuth } from '../../context/authContext'
 
 
-export default function Index() {
+export default function RegisterScreen() {
   const router = useRouter()
   const { register } = useAuth()
 

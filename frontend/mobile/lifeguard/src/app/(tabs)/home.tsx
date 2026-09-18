@@ -1,10 +1,10 @@
 import * as Haptics from 'expo-haptics'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Screen from '../../../components/screen'
-import { spacing } from '../../../utils/spacing'
+import { SIZE } from '../../../utils/size'
 
 
-const Emergency = () => {
+const HomeScreen = () => {
 
   const handleSOS = () => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning)
@@ -32,12 +32,12 @@ const Emergency = () => {
   )
 }
 
-export default Emergency
+export default HomeScreen
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: spacing.lg,
-    gap: spacing.lg,
+    paddingVertical: SIZE.lg,
+    gap: SIZE.lg,
   },
   
 })
