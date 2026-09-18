@@ -15,7 +15,7 @@ export default function RootLayout() {
       }
     }>
       <Tabs.Screen
-        name="emergency"
+        name="index"
         options={{
           headerShown: false,
           title: "Urgence",

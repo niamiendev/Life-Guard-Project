@@ -9,17 +9,17 @@ export default function RootLayout() {
           options={{ headerShown: false, animation: "default" }}
         />
         <Stack.Screen name="login"
-          options={{ headerShown: false, animation: "slide_from_right" }}
+          options={{ headerShown: false, animation: "fade" }}
         />
         <Stack.Screen name="register"
-          options={{ headerShown: false, animation: "slide_from_right" }}
+          options={{ headerShown: false, animation: "fade" }}
         />
         <Stack.Screen name="forgot"
-          options={{ headerShown: false, animation: "slide_from_right" }}
+          options={{ headerShown: false, animation: "fade" }}
         />
         <Stack.Screen
           name="(tabs)"
-          options={{ headerShown: false }}
+          options={{ headerShown: false, animation:"fade" }}
         />
       </Stack>
     </AuthProvider>

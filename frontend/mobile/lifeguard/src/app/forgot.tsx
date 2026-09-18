@@ -1,11 +1,7 @@
-import { Link, useRouter } from 'expo-router'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import Button from '../../components/button'
-import Hearder from '../../components/header'
-import Input from '../../components/input'
+import { StyleSheet } from 'react-native'
 import Screen from '../../components/screen'
-import { bg, light_grey, white, white_deg } from '../../utils/color'
 
 export default function Index() {
   const router = useRouter()
@@ -15,27 +11,7 @@ export default function Index() {
 
   return (
     <Screen style={styles.container}>
-      <Hearder />
-      <Text style={{ color: white, fontSize: 24, fontWeight: "700" }}>Mot de passe oublié</Text>
-      <View style={{ gap: 16 }}>
-        <Input placeholder='Email' icon='person-outline' value={username} onChangeText={setUsername} />
-      </View>
-      <Button
-        withBorder={true}
-        backgroundColor={bg}
-        onPress={() => { router.push("/register") }}
-      >
-        <Text style={{ color: white }}>Rénitialiser le mot de passe</Text>
-      </Button>
-      <Link href="/" style={{ color: "transparent", marginTop: 24 }}>
-        <Text style={{ color: white_deg, textAlign: "center" }}>Déjà un compte ? Connectez-vous</Text>
-      </Link>
-
-      <View style={{ flex: 1 }} ></View>
-      <Text style={styles.bottomText}>
-        Données de la localisation et de santé chiffrées de bout en bout
-      </Text>
-
+      
     </Screen>
   )
 }
@@ -43,20 +19,7 @@ export default function Index() {
 const styles = StyleSheet.create(
   {
     container: {
-      flex: 1,
-      color: white,
-      paddingHorizontal: 16,
-      paddingVertical: 24,
-      gap: 16
+      flex: 1
     },
-    buttonText: {
-      color: white_deg
-    },
-    bottomText: {
-      paddingHorizontal: 42,
-      color: light_grey,
-      textAlign: "center",
-      fontSize: 12,
-    }
   }
 )
